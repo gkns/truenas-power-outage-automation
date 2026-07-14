@@ -1,0 +1,2 @@
+shell_command:
+  truenas_emergency_shutdown: "/config/truenas_emergency_shutdown_midclt.sh"

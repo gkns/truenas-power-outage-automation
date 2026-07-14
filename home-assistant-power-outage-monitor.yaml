@@ -1,0 +1,22 @@
+alias: TrueNAS-Shutdown-on-Power-Outage-Archer-Monitor
+description: >-
+  Initiates TrueNAS shutdown when BOTH wall-connected Archer AX10 routers drop
+  off the LAN.
+triggers:
+  - value_template: |
+      {{ states('binary_sensor.archer_ax10_power_monitor1') == 'off' and 
+         states('binary_sensor.archer_ax10_power_monitor2') == 'off' }}
+    for:
+      minutes: 2
+    trigger: template
+actions:
+  - data:
+      title: ⚠️ Power Outage Detected
+      message: >-
+        Both Archer AX10 routers offline for 2 minutes. Initiating TrueNAS
+        shutdown.
+    action: notify.notify
+  - data: {}
+    action: shell_command.truenas_emergency_shutdown
+mode: single
+
