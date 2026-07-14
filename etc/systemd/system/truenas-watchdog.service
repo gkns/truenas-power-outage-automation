@@ -1,0 +1,13 @@
+cat /etc/systemd/system/truenas-watchdog.service
+[Unit]
+Description=TrueNAS Wake-on-LAN Watchdog Daemon
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/truenas_watchdog.sh
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
