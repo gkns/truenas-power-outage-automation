@@ -11,4 +11,4 @@ ssh $SSH_OPTS $TARGET "midclt call mail.send '{\"subject\": \"⚠️ TrueNAS Pow
 sleep 10
 
 # 3. Initiate Shutdown via midclt
-ssh $SSH_OPTS $TARGET "midclt call system.shutdown '{\"reason\":\"Power Outage. Shutdown initiated by home assistant\"'"
+ssh $SSH_OPTS $TARGET "midclt call system.shutdown '{\"reason\":\"Power Outage. Shutdown initiated by home assistant\"}'"
