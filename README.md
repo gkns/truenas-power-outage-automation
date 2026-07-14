@@ -6,6 +6,8 @@ It utilizes network presence detection as a proxy for utility power status to cl
 
 ## Architecture
 
+**NOTE**: Both the TrueNAS and pikvm are connected to the same dumb UPS (that lasts approximately 15 minutes.) And the two routers that are monitored are directly connected to wall power. Although the whole setup is covered by a larger home inverter UPS. So this system will likely kick-in only if the outage lasts longer than 3 hours. But this automation is tested by manually disconnecting power to the routers that are monitored by the automation.
+
 1. **Shutdown (Home Assistant):** Monitors two wall-connected routers (Archer AX10) via ICMP. If both routers drop offline for 2 minutes, Home asisstant confirms a grid power failure, dispatches an email alert, and initiates a graceful shutdown of the TrueNAS host via an SSH tunnel and `midclt`. (The new websocket APIs for TrueNAS are cumbersome for home-asistant, hence the `midclt`)
 
 2. **Wake (PiKVM):** Runs a persistent systemd watchdog daemon. Once utility power is restored (confirmed by the wall routers coming back online) while TrueNAS is safely powered off, the PiKVM broadcasts a Wake-on-LAN (WOL) packet to boot the storage array.
