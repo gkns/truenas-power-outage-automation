@@ -1,2 +1,3 @@
+# Append the below to the existing configuration (/config/configuration.yaml)
 shell_command:
   truenas_emergency_shutdown: "/config/truenas_emergency_shutdown_midclt.sh"
