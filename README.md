@@ -1,6 +1,6 @@
 # TrueNAS Power Outage & Recovery Automation
 
-This repository contains an event-driven monitoring setup that bridges a "dumb" UPS to a TrueNAS SCALE server using Home Assistant and a PiKVM (This pikvm is connected to control the very same TrueNAS server).
+This repository  contains an event-driven monitoring setup that bridges a "dumb" UPS to a TrueNAS SCALE server using Home Assistant and a PiKVM (This pikvm is connected to control the very same TrueNAS server).
 
 It utilizes network presence detection as a proxy for utility power status to cleanly manage the TrueNAS lifecycle (shutdown and automated wake) without modifying the core TrueNAS OS.
 
